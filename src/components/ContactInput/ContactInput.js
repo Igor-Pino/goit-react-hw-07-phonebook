@@ -1,17 +1,18 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import PropTypes from 'prop-types';
+
 import ShortId from 'shortid';
-import { addContact } from '../../redux/actions/contacts-actions';
+// import { addContact } from '../../redux/actions/contacts-actions';
+import addContact from '../../redux/operations/operations';
 
 function ContactInput() {
   const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
+  const [phone, setNumber] = useState('');
 
   const nameInputId = ShortId.generate();
   const numberInputId = ShortId.generate();
 
-  const inputContact = { name, number };
+  const inputContact = { name, phone };
 
   const stateContacts = useSelector(state => state.contactBook.contacts);
 
@@ -74,14 +75,14 @@ function ContactInput() {
         />
       </label>
       <label id={numberInputId}>
-        Number
+        Phone
         <input
           type="tel"
           name="number"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
           required
-          value={number}
+          value={phone}
           id={numberInputId}
           onChange={handelChange}
         />
@@ -90,9 +91,5 @@ function ContactInput() {
     </form>
   );
 }
-
-ContactInput.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-};
 
 export default ContactInput;

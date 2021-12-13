@@ -13,8 +13,6 @@ const ContactsList = () => {
 
   const contacts = useSelector(contactFilter);
 
-  console.log(contacts);
-
   return (
     <ul className={s.contact_list}>
       {contacts.map(contact => (
