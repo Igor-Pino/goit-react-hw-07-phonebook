@@ -1,13 +1,21 @@
 import React from 'react';
+import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteContact } from '../../redux/actions/contacts-actions';
+// import { deleteContact } from '../../redux/actions/contacts-actions';
+import { deleteContact, getContacts } from '../../redux/operations/operations';
 import { contactFilter } from '../../redux/PhoneBook-selectors';
 import ContactItem from '../ContactItem';
 import s from './ContactsList.module.scss';
 
 const ContactsList = () => {
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    const fetchContacts = () => dispatch(getContacts());
+
+    fetchContacts();
+  }, [dispatch]);
 
   const onDeleteContact = id => dispatch(deleteContact(id));
 

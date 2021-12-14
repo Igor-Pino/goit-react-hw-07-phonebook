@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import ShortId from 'shortid';
 // import { addContact } from '../../redux/actions/contacts-actions';
-import addContact from '../../redux/operations/operations';
+import { addContact } from '../../redux/operations/operations';
 
 function ContactInput() {
   const [name, setName] = useState('');

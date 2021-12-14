@@ -1,5 +1,6 @@
 const getContacts = state => state.contactBook.contacts;
 const getFilter = state => state.contactBook.filter;
+const getLoading = state => state.contactBook.loading;
 
 const contactFilter = state => {
   const normalizedFilter = getFilter(state).toLowerCase();
@@ -9,4 +10,4 @@ const contactFilter = state => {
   return filteredContacts;
 };
 
-export { getContacts, getFilter, contactFilter };
+export { getContacts, getFilter, getLoading, contactFilter };
